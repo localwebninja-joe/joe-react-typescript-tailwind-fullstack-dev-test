@@ -1,4 +1,6 @@
 import React from 'react';
+import TableData from './tableData';
+import TableHeader from './tableHeader';
 interface TechnicalAnalysisProps {
 	metaData?: { [key: string]: string };
 	selectedItem: string;
@@ -9,15 +11,15 @@ function TechnicalAnalysis({ metaData, selectedItem }: TechnicalAnalysisProps): 
 		<table className="w-full table-auto bg-white rounded-lg">
 			<thead className="bg-gray-200">
 				<tr>
-					<th className="py-2 px-4 font-bold uppercase text-sm text-gray-700">Date</th>
-					<th className="py-2 px-4 font-bold uppercase text-sm text-gray-700">{ selectedItem }</th>
+				<TableHeader value={'Date'}/>
+				<TableHeader value={ selectedItem }/>
 				</tr>
 			</thead>
 			<tbody className="divide-y divide-gray-200">
 				{metaData && Object.keys(metaData).map(date => (
 					<tr key={date} className="hover:bg-gray-100">
-						<td className="py-2 px-4 whitespace-nowrap text-sm font-medium text-gray-500">{date}</td>
-						<td className="py-2 px-4 whitespace-nowrap text-sm font-medium text-gray-500">{ metaData[date][selectedItem]} </td>
+						<TableData value={ date }/>
+						<TableData value={ metaData[date][selectedItem] }/>
 					</tr>
 				))}
 			</tbody>
